@@ -2603,7 +2603,7 @@ fn register_rect(ui: &Ui, rect: Rect) {
         return;
     }
 
-    let is_clicking = ui.input(|i| i.pointer.could_any_button_be_click());
+    let is_clicking = ui.memory(|m| ui.input(|i| i.pointer.could_any_button_be_click(&m.options)));
 
     #[cfg(feature = "callstack")]
     let callstack = crate::callstack::capture();
